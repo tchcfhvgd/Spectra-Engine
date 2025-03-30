@@ -31,12 +31,12 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" />
+	<window if="mobile" orientation="landscape" fullscreen="true" resizable="false" allow-shaders="true" require-shaders="true" allow-high-dpi="true" />
 
 	<!-- _____________________________ Custom Defines ____________________________ -->
 
 	<define name="DISCORD_RPC" if="desktop" unless="web || neko" />
-	<define name="VIDEO_PLUGIN" if="windows" unless="32bits || HXCPP_M32 || neko" />
+	<define name="VIDEO_PLUGIN" if="windows || mobile" unless="32bits || HXCPP_M32 || neko" />
 	<define name="SHOW_CONSOLE" if="debug" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
@@ -62,8 +62,9 @@
 	<haxelib name="discord_rpc" if="DISCORD_RPC" />
 
 	<haxelib name="hxCodec" if="VIDEO_PLUGIN" />
-	<haxelib name="SScript" if="desktop" />
+	<haxelib name="SScript" if="desktop || mobile" />
 	<haxelib name="hxcpp-debug-server" if="debug" />
+        <haxelib name="extension-androidtools" if="android" />
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
@@ -85,12 +86,17 @@
 	<!--Enable this for Nape release builds for a serious peformance improvement-->
 	<haxedef name="NAPE_RELEASE_BUILD" unless="debug" />
 
-	<!-- Always enable Null Object Reference check for crash dialog -->
-	<haxedef name="HXCPP_CHECK_POINTER" if="release" />
-	<haxedef name="HXCPP_STACK_LINE" if="release" />
+	<section if="cpp">
+		<haxedef name="HXCPP_CHECK_POINTER" />
+		<haxedef name="HXCPP_STACK_LINE" />
+		<haxedef name="HXCPP_STACK_TRACE" />
+		<haxedef name="HXCPP_CATCH_SEGV" />
+	</section>
 
-	<haxedef name="no-deprecation-warnings" />
+	<haxedef name='no-deprecation-warnings' />
 
+	<!-- Do whatever you want I'm tired uninstall and install everytime -->
+	<certificate path="key.keystore" password="psychengine" alias="psychport" alias-password="psychengine" if="android" unless="debug" />
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<icon path="art/icon16.png" size='16' />
