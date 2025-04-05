@@ -40,6 +40,9 @@ class Memory {
 		return memory;
 	}
 	#else
+	static function windowsObtainMemory():Dynamic
+		return 0;
+		
 	public static function obtainMemory():Dynamic
 	{
 		var memory = windowsObtainMemory();
