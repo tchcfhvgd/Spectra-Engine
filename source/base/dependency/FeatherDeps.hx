@@ -149,7 +149,7 @@ class ScriptHandler extends SScript
 		set('FlxRect', flixel.math.FlxRect);
 		set('FlxVelocity', flixel.math.FlxVelocity);
 		set('FlxAngle', flixel.math.FlxAngle);
-		set('FlxSinCos', flixel.math.FlxAngle.FlxSinCos);
+		//set('FlxSinCos', flixel.math.FlxAngle.FlxSinCos);
 
 		// FLIXEL UTILS
 		set('FlxCollision', flixel.util.FlxCollision);
